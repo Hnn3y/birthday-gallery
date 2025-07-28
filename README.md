@@ -1,12 +1,74 @@
-# React + Vite
+# Birthday Gallery 
+A simple web application to display a gallery of birthday image moments.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- Upload and display birthday images
+- Responsive design
+- Easy to use interface
+- Image gallery with thumbnails
 
-Currently, two official plugins are available:
+## Technologies Used
+- React
+- Node.js
+- Express
+- MongoDB
+- Bootstrap
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```mermaid 
+graph TD
+    A[Start] --> B{User Type?}
+    B -->|Regular User| C[User Login]
+    B -->|Admin| D[Admin Login]
+    
+    %% Regular User Flow
+    C --> E{Authenticated?}
+    E -->|No| F[Display Login Form]
+    F --> G[Enter Email]
+    G --> H[Submit Login]
+    H --> E
+    
+    E -->|Yes| I[User Dashboard]
+    I --> J[View Gallery]
+    I --> K[Upload Media]
+    
+    %% Upload Flow
+    K --> L[Fill Upload Form]
+    L --> L1[Enter Title]
+    L --> L2[Enter Caption]
+    L --> L3[Upload Media]
+    L3 --> L3a[Show Preview]
+    L --> L4[Enter Poster Name]
+    L1 & L2 & L3a & L4 --> M[Submit Media]
+    M --> N[Show Upload Progress]
+    N --> O{Upload Complete?}
+    O -->|Yes| P[Success Message]
+    O -->|No| Q[Error Message]
+    Q --> L
+    P --> J
+    
+    %% Gallery View Flow
+    J --> R[Browse Media Grid]
+    R --> S[View Media Details]
+    S --> T[Return to Gallery]
+    T --> R
+    
+    %% Admin Flow
+    D --> U{Authenticated as Admin?}
+    U -->|No| F
+    U -->|Yes| V[Admin Dashboard]
+    V --> W[View All Uploads]
+    W --> X[Review Content]
+    X --> Y{Decision?}
+    Y -->|Approve| Z[Mark as Approved]
+    Y -->|Delete| AA[Remove Content]
+    Z & AA --> W
+    
+    %% Mobile Responsiveness
+    subgraph Mobile View
+    AB[Responsive Layout]
+    AC[Adjusted Touch Targets]
+    AD[Optimized Media Display]
+    end
+    
+    I -.-> AB
+    V -.-> AB
