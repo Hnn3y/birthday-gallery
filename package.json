@@ -26,5 +26,18 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.11",
     "vite": "^7.0.4"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hnn3y/birthday-gallery.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hnn3y/birthday-gallery/issues"
+  },
+  "homepage": "https://github.com/Hnn3y/birthday-gallery#readme"
 }
