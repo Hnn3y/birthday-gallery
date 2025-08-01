@@ -1,60 +1,37 @@
 ```mermaid
 flowchart TD
   %% Entry Point
-  A[Start] --> B{User Type?}
-  B -->|Regular User| C[User Login]
-  B -->|Admin| D[Admin Login]
+ A[User Clicks Link] --> B[Upload Page]
+  B --> C[User Uploads Image/Video + Poster Name + Caption]
+  C --> D[Upload Stored in DB as Pending]
+  D --> E[Redirect to Gallery Page]
+  E --> F[Show Only Approved Media]
 
-  %% Regular User Flow
-  C --> E{Authenticated?}
-  E -->|No| F[Display Login Form]
-  F --> G[Enter Email]
-  G --> H[Submit Login]
-  H --> E
-  E -->|Yes| I[User Dashboard]
+  %% Admin Moderation Flow
+  D --> G[Admin Dashboard]
+  G --> H[Review Uploaded Media]
+  H --> I{Approve or Reject?}
+  I -->|Approve| J[Media Status: Approved]
+  I -->|Reject| K[Media Removed]
+  J --> F
 
-  %% User Dashboard Options
-  I --> J[View Gallery]
-  I --> K[Upload Media]
+  %% Gallery Interaction
+  F --> L[Animated Display of Media Grid]
+  L --> M[User Views Media Details]
+  M --> N[Users Can Add Comments]
+  N --> O[Other Users Can See Comments]
 
-  %% Upload Flow
-  K --> L[Fill Upload Form]
-  L --> L1[Enter Title]
-  L --> L2[Enter Caption]
-  L --> L3[Upload Media]
-  L3 --> L3a[Show Preview]
-  L --> L4[Enter Poster Name]
-  L1 & L2 & L3a & L4 --> M[Submit Media]
-  M --> N[Show Upload Progress]
-  N --> O{Upload Complete?}
-  O -->|Yes| P[Success Message]
-  O -->|No| Q[Error Message]
-  Q --> L
-  P --> J
-
-  %% Gallery View Flow
-  J --> R[Browse Media Grid]
-  R --> S[View Media Details]
-  S --> T[Return to Gallery]
-  T --> R
-
-  %% Admin Flow
-  D --> U{Authenticated as Admin?}
-  U -->|No| F
-  U -->|Yes| V[Admin Dashboard]
-  V --> W[View All Uploads]
-  W --> X[Review Content]
-  X --> Y{Decision?}
-  Y -->|Approve| Z[Mark as Approved]
-  Y -->|Delete| AA[Remove Content]
-  Z & AA --> W
-
-  %% Mobile Responsiveness
-  subgraph Mobile_Responsiveness [Mobile Responsiveness]
-    AB[Responsive Layout]
-    AC[Adjusted Touch Targets]
-    AD[Optimized Media Display]
+  %% Tools and Design
+  subgraph Tech_Stack [Built With]
+    T1[MUI]
+    T2[Tailwind CSS]
+    T3[Framer Motion for Animations]
+    T4[Supabase or Cloudinary for Media Storage]
+    T5[React + Vite + React Router]
   end
 
-  I -.-> AB
-  V -.-> AB
+  A --> T1
+  A --> T2
+  L --> T3
+  C --> T4
+  A --> T5
