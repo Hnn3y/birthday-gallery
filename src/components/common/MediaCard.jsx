@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, MessageCircle, Calendar, User, Play } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent } from './components/ui/card'
 
 const MediaCard = ({ media, index }) => {
   const [isLiked, setIsLiked] = useState(false)

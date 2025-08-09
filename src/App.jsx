@@ -9,7 +9,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Routes using MainLayout */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<UploadPage />} />
           <Route path="gallery" element={<GalleryPage />} />
